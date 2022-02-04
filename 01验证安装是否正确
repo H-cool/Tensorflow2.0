@@ -1,12 +1,15 @@
 #在Jupyter Notebook中使用
-tf.compat.v1.disable_eager_execution()
+tf.compat.v1.disable_eager_execution()#在tensorflow2.0中没有session，要在第一行加这个
+
 import tensorflow as tf
 import numpy as np
 import matplotlib.pyplot as plt
-%matplotlib inline
-a=tf.random.normal([2,20])
-sess=tf.compat.v1.Session()
-out=sess.run(a)
-x,y=out
-plt.scatter(x,y)
+
+%matplotlib inline#这是一条专门的命令，用于通知笔记本将matplotlib图表直接显示在浏览器中
+
+a=tf.random.normal([2,20])#用TensorFlow定义一个由随机数构成的2×20的矩阵，并将其赋给变量a。
+sess=tf.compat.v1.Session()#启动TensorFlow Session，并将其赋予一个sess对象。
+out=sess.run(a)#用sess.run（）方法执行对象a，并将输出（NumPy数组）赋给out。
+x,y=out#）将这个2×20的矩阵划分为两个1×10的向量x和y。
+plt.scatter(x,y)#利用pyplot模块绘制散点图，x对应横轴，y对应纵轴。
 plt.show()
